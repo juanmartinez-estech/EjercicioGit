@@ -15,7 +15,7 @@ public class Coche {
 
     @Override
     public String toString(){
-        return "Coche: " + nombre + ", Tiempomde vueta: " + tiempodevuelta;
+        return "Coche: " + nombre + ", Tiempo de vueta: " + tiempodevuelta ;
     }
 
 

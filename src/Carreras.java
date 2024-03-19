@@ -8,13 +8,12 @@ public class Carreras {
     private boolean enCurso;
     private ArrayList<Coche> coches;
 
-    Reloj reloj1 = new Reloj();
-    Coche coche11 = new Coche(null, 0, 0, 0);
+    
 
-    public void Carrera(Coche coche11, Reloj reloj1, boolean tiempo) {
-        this.coches = coches.add(coche11) ;
-        this.tiempoInicio = reloj1;
-        this.enCurso = tiempo;
+    public Carreras() {
+        this.coches = new ArrayList<Coche>();
+        this.tiempoInicio = new Reloj();
+        this.enCurso = false;
     }
 
     public void agregarCoche(Coche coche) {
