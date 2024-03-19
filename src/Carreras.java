@@ -8,29 +8,29 @@ public class Carreras {
     private boolean enCurso;
     private ArrayList<Coche> coches;
 
-    public void Carrera() {
-        this.coches = new ArrayList<Coche>();
-        this.tiempoInicio = new Reloj();
-        this.enCurso = false;
+    Reloj reloj1 = new Reloj();
+    Coche coche11 = new Coche(null, 0, 0, 0);
+
+    public void Carrera(Coche coche11, Reloj reloj1, boolean tiempo) {
+        this.coches = coches.add(coche11) ;
+        this.tiempoInicio = reloj1;
+        this.enCurso = tiempo;
     }
 
     public void agregarCoche(Coche coche) {
-        coches.add(coche);
+        System.out.println(coche);
+        this.coches.add(coche);
     }
 
     public void comenzarCarrera() {
         enCurso = true;
     }
 
-    public void registrarTiempoDeVuelta(Coche coche, int horas, int minutos, int segundos) {
-        if (enCurso) {
-            for (Coche coche2 : coches) {
-                if (coche2 == coche) {
-                    coche2.getTiempodevuelta().modificarHora(horas, minutos, segundos);  
-                }
+    public void registrarTiempoDeVuelta(Reloj tiempoCoche1, Coche coche1) {
+        for (int i = 0; i < coches.size(); i++) {
+            if (coches.get(i).getNombre().equals(coche1)) {
+                coches.get(i).setTiempodevuelta(tiempoCoche1);
             }
-        } else {
-            System.out.println("La carrera no ha comenzado");
         }
     }
 
@@ -46,6 +46,9 @@ public class Carreras {
                coche.getTiempodevuelta().getMinuto() * 60 +
                coche.getTiempodevuelta().getSegundo();
     }
+
+    
+
 }
 
 
