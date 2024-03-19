@@ -1,9 +1,9 @@
 public class Coche {
+    
     //Variables
 
     String nombre;
     Reloj tiempodevuelta;
-
 
     //Constructores
 
@@ -12,13 +12,11 @@ public class Coche {
         this.tiempodevuelta = new Reloj(horas,minutos,segundos);
     }
 
-    
 
     @Override
     public String toString(){
         return "Coche: " + nombre + ", Tiempomde vueta: " + tiempodevuelta;
     }
-
 
 
     public String getNombre() {
@@ -29,7 +27,6 @@ public class Coche {
     public Reloj getTiempodevuelta() {
         return tiempodevuelta;
     }
-
 
 
     public void setTiempodevuelta(Reloj tiempodevuelta) {

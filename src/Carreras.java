@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-public class Carreras {
-    
-    
-}
-=======
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,36 +6,72 @@ import java.util.List;
 public class Carreras {
     private Reloj tiempoInicio;
     private boolean enCurso;
-    private List<Coche> coches;
+    private ArrayList<Coche> coches;
 
-    // Constructor que inicializa la lista de coches y el tiempo de inicio de la carrera
-    public Carrera(List<Coche> coches, Reloj tiempoInicio) {
-        this.coches = new ArrayList<>(coches);
-        this.tiempoInicio = tiempoInicio;
+    public void Carrera() {
+        this.coches = new ArrayList<Coche>();
+        this.tiempoInicio = new Reloj();
         this.enCurso = false;
     }
 
-    // Método para agregar coches a la carrera
     public void agregarCoche(Coche coche) {
         coches.add(coche);
     }
 
-    // Método para comenzar la carrera
     public void comenzarCarrera() {
         enCurso = true;
     }
 
-    // Método para registrar el tiempo de vuelta de un coche
     public void registrarTiempoDeVuelta(Coche coche, int horas, int minutos, int segundos) {
         if (enCurso) {
-            coche.getTiempodevuelta().modificarHora(horas, minutos, segundos);
+            for (Coche coche2 : coches) {
+                if (coche2 == coche) {
+                    coche2.getTiempodevuelta().modificarHora(horas, minutos, segundos);  
+                }
+            }
         } else {
-            System.out.println("La carrera no está en curso.");
+            System.out.println("La carrera no ha comenzado");
         }
     }
 
-    // Método para finalizar la carrera y generar una clasificación de los coches participantes
     public void finalizarCarrera() {
+        enCurso = false;
+        Collections.sort(coches, (c1, c2) -> {
+            return tiempoTotal(c1) - tiempoTotal(c2);
+        });
+    }
+
+    private int tiempoTotal(Coche coche) {
+        return coche.getTiempodevuelta().getHora() * 3600 +
+               coche.getTiempodevuelta().getMinuto() * 60 +
+               coche.getTiempodevuelta().getSegundo();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* public void finalizaCarrera() {
         enCurso = false;
         Collections.sort(coches, (c1, c2) -> {
             int tiempoC1 = c1.getTiempodevuelta().getHora() * 3600 +
@@ -52,8 +83,7 @@ public class Carreras {
             return tiempoC1 - tiempoC2;
         });
     }
-
-    // Método para mostrar la clasificación final
+   
     public void mostrarClasificacion() {
         System.out.println("Clasificación final:");
         for (int i = 0; i < coches.size(); i++) {
@@ -61,7 +91,4 @@ public class Carreras {
             System.out.println((i + 1) + ". " + coche);
         }
     }
-}
-    
-
->>>>>>> 90a6c5ffa7d29456fbf51754a2c54b00b1d30635
+     */
